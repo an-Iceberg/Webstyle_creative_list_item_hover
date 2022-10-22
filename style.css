@@ -54,9 +54,12 @@ body .container ul li {
   gap: 30px;
   flex-wrap: nowrap;
 }
-body .container ul li::before {
+body .container ul li::after, body .container ul li::before {
   content: "";
   position: absolute;
+  transition: all 0.3s;
+}
+body .container ul li::before {
   top: 0;
   left: 0;
   width: 35px;
@@ -64,19 +67,15 @@ body .container ul li::before {
   border-radius: 35px;
   border: 2px solid #03a9f4;
   background-color: transparent;
-  transition: all 0.3s;
   z-index: -1;
 }
 body .container ul li::after {
-  content: "";
-  position: absolute;
   top: 14px;
   left: 12px;
   width: 8px;
   height: 8px;
   border-top: 2px solid #fff;
   border-right: 2px solid #fff;
-  transition: all 0.3s;
   rotate: 45deg;
 }
 body .container ul li:hover::before {

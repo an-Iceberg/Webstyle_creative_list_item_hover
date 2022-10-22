@@ -40,7 +40,7 @@ body {
       li {
         $height: 35px;
         $border: 2px;
-        $top: $height / 2.5;
+        $top: $height * 0.4;
         $left: $top - 2px;
         $transition-duration: .5s;
         $transition-delay: .5s;
@@ -50,10 +50,14 @@ body {
         height: $height + (2 * $border);
         @include flex();
 
-        // Border and bg color
-        &::before {
+        &::after, &::before {
           content: '';
           position: absolute;
+          transition: all .3s;
+        }
+
+        // Border and bg color
+        &::before {
           top: 0;
           left: 0;
           width: $height;
@@ -61,21 +65,17 @@ body {
           border-radius: $height;
           border: $border solid #03a9f4;
           background-color: transparent;
-          transition: all .3s;
           z-index: -1;
         }
 
         // Chevron
         &::after {
-          content: '';
-          position: absolute;
           top: $top;
           left: $left;
           width: 8px;
           height: 8px;
           border-top: 2px solid #fff;
           border-right: 2px solid #fff;
-          transition: all .3s;
           rotate: 45deg;
         }
 
