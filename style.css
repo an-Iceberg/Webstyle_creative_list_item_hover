@@ -1,0 +1,99 @@
+*, *:is(::after, ::before) {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font: 1rem "Veranda", sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: nowrap;
+  background-color: #03a9f4;
+}
+body .container {
+  background-color: #182b3c;
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  flex-wrap: nowrap;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+}
+body .container h2 {
+  font-size: 2rem;
+  color: #fff;
+  font-weight: bold;
+  border-bottom: 2px solid #fff;
+}
+body .container ul {
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+  flex-wrap: nowrap;
+}
+body .container ul li {
+  position: relative;
+  list-style: none;
+  padding-left: 39px;
+  height: 39px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: nowrap;
+}
+body .container ul li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 35px;
+  height: 35px;
+  border-radius: 35px;
+  border: 2px solid #03a9f4;
+  background-color: transparent;
+  transition: all 0.3s;
+  z-index: -1;
+}
+body .container ul li::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: 12px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  transition: all 0.3s;
+  rotate: 45deg;
+}
+body .container ul li:hover::before {
+  width: 100%;
+  background-color: #03a9f4;
+  border-color: #555;
+  transition: background-color 0.5s, border-color 0.5s, width 0.5s 0.5s;
+}
+body .container ul li:hover::after {
+  scale: 1.5;
+  left: 24px;
+  transition: scale 0.5s, left 0.5s 0.5s;
+}
+body .container ul li p {
+  color: #fff;
+  z-index: 10;
+  padding: 5px 10px;
+}
+
+/*# sourceMappingURL=style.css.map */

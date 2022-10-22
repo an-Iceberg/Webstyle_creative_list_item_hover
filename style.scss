@@ -1,0 +1,110 @@
+@mixin flex($direction: column, $content: center, $align: center, $gap: 30px, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $content;
+  align-items: $align;
+  gap: $gap;
+  flex-wrap: $wrap;
+}
+
+*, *:is(::after, ::before) {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font: 1rem "Veranda", sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  @include flex();
+  background-color: #03a9f4;
+
+  .container {
+    background-color: #182b3c;
+    padding: 35px;
+    @include flex($align: flex-start);
+    box-shadow: 0 15px 25px #00000066;
+
+    h2 {
+      font-size: 2rem;
+      color: #fff;
+      font-weight: bold;
+      border-bottom: 2px solid #fff;
+    }
+
+    ul {
+      isolation: isolate;
+      @include flex($align: flex-start, $gap: 15px);
+
+      li {
+        $height: 35px;
+        $border: 2px;
+        $top: $height / 2.5;
+        $left: $top - 2px;
+        $transition-duration: .5s;
+        $transition-delay: .5s;
+        position: relative;
+        list-style: none;
+        padding-left: $height + (2 * $border);
+        height: $height + (2 * $border);
+        @include flex();
+
+        // Border and bg color
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: $height;
+          height: $height;
+          border-radius: $height;
+          border: $border solid #03a9f4;
+          background-color: transparent;
+          transition: all .3s;
+          z-index: -1;
+        }
+
+        // Chevron
+        &::after {
+          content: '';
+          position: absolute;
+          top: $top;
+          left: $left;
+          width: 8px;
+          height: 8px;
+          border-top: 2px solid #fff;
+          border-right: 2px solid #fff;
+          transition: all .3s;
+          rotate: 45deg;
+        }
+
+        &:hover {
+          &::before {
+            width: 100%;
+            background-color: #03a9f4;
+            border-color: #555;
+            transition:
+              background-color $transition-duration,
+              border-color $transition-duration,
+              width $transition-duration $transition-delay;
+          }
+
+          &::after {
+            scale: 1.5;
+            left: $left * 2;
+            transition:
+              scale $transition-duration,
+              left $transition-duration $transition-delay;
+          }
+        }
+
+        p {
+          color: #fff;
+          z-index: 10;
+          padding: 5px 10px;
+        }
+      }
+    }
+  }
+}
